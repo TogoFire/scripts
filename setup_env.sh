@@ -8,8 +8,4 @@ rm -rf cscript/scripts
 # Clone the latest proton-clang by Kdrag0n
 git clone https://github.com/kdrag0n/proton-clang --depth=1
 # Clone AnyKernel3
-git clone https://github.com/Daisy-Q-sources/AnyKernel3
-
-
-
-
+git clone https://github.com/TogoFire/AnyKernel3
