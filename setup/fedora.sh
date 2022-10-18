@@ -45,10 +45,13 @@ sudo dnf install \
     openssl-devel \
     java-1.8.0-openjdk-devel \
     ImageMagick \
+    ncurses \
     schedtool \
     lzip \
     vboot-utils \
-    vim
+    vim \
+    sha \
+    megatools
 
 # Development and build tools
 # sudo dnf groupinstall "Development Tools" "Development Libraries"
