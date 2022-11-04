@@ -51,7 +51,7 @@ sudo dnf install \
     vim
 
 # Development and build tools
-sudo dnf groupinstall "Development Tools" "Development Libraries"
+# sudo dnf groupinstall "Development Tools" "Development Libraries"
 
 # The package libncurses5 is not available, so we need to hack our way by symlinking the required library.
 sudo ln -s /usr/lib/libncurses.so.6 /usr/lib/libncurses.so.5
