@@ -92,3 +92,10 @@ sudo udevadm control --reload-rules
 
 # Set default editor
 git config --global core.editor "nano"
+
+# Terminals ohmyz.sh & alacritty (https://blog.praveen.science/oh-my-zsh-cheat-sheet/) - Ways (commands): "/bin/bash" "/usr/bin/zsh" "/bin/sh"
+sudo zypper install cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel alacritty zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# TheFuck (https://github.com/nvbn/thefuck) - nano ~/.bashrc - eval $(thefuck --alias) - source ~/.bashrc
+pip install thefuck
