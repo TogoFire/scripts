@@ -6,12 +6,19 @@ Firstly, install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing
 Then, run these commands
 
 ```bash
-$ git clone https://github.com/akhilnarang/scripts
+$ git clone https://github.com/togofire/scripts
 $ cd scripts
 $ bash setup/<name of script>
 ```
 
-`android_build_env.sh` is for Ubuntu/Linux Mint/other distributions using the `apt` package manager.
+`android_build_env.sh` is for Ubuntu/Mint/Debian/Pop/Zorin/other MEME distributions using the `apt` package manager.
+
+`opensuse.sh` is for openSUSE/Gecko/Regata/other distributions using the `zypper` package manager.
+
+`fedora.sh` is for Fedora/Nobara/Ultramarine/other distributions using the `dnf` package manager.
+
+`arch-manjaro.sh` is for Arch/Manjaro/other distributions using the `pacman` package manager.
+
 The rest are named as per the distro.
 
 Please run the correct script depending on the distro you have installed!
