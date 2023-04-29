@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Set Change-Id
+commit_msg_file=$1
+original_commit_msg=$(cat "$commit_msg_file")
+
+# Find the first Signed-off-by line
+first_signed_off_by=$(echo -n "$original_commit_msg" | grep -m 1 "^Signed-off-by:")
+
+# Add Change-Id
+commit_hash=$(echo -n "${original_commit_msg}" | git hash-object -w --stdin)
+change_id=$(echo -n "I${commit_hash}" | openssl sha1 | awk '{print $2}')
+
+if [ -z "$change_id" ]; then
+    echo >&2 "[ERROR] Failed to generate Change-Id."
+else
+    # Replace existing Change-Id or add new one before the signed-off-by line
+    sed -i.bak '/^Change-Id:/d' "$commit_msg_file"
+    if [ -z "$first_signed_off_by" ]; then
+        # If no Signed-off-by line is found, add Change-Id at the end of the message
+        echo -e "\nChange-Id: I$change_id\n" >> "$commit_msg_file"
+    else
+        # If a Signed-off-by line is found, add Change-Id just before it
+        awk -v id="I$change_id" 'BEGIN{OFS=FS="\n"} {gsub(/\r/,""); print} /'"$first_signed_off_by"'/{print "Change-Id: "id}' < "$commit_msg_file" > tmpfile
+        mv tmpfile "$commit_msg_file"
+    fi
+fi
+
+if [ -z "$original_commit_msg" ]; then
+    echo >&2 "[WARN] Commit message was empty."
+fi
