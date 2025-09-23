@@ -16,8 +16,7 @@ Ready-to-use scripts and executables that simplify setup and updates for InfoRet
     * Checks for and installs **Chocolatey** (package manager) if necessary.
     * Installs essential tools like **7-Zip**, Curl, Notepad++, and Fastfetch via Chocolatey.
     * **Downloads and places** the `InfoUp.exe` executable (the main update tool) in `C:\Infobrasil`.
-    * **Updates InfoRetaguarda**, including automatic program shutdown, download, and extraction of update files (`InfoDBX.rar`).
-    * **Updates InfoPDV**, including automatic program shutdown, download, and extraction of update files (`InfoPDV_e.rar`).
+    * **Updates Info**, Downloads and installs updates for InfoRetaguarda and InfoPDV. It handles program shutdowns and extracts files, attempting a password (infobrasil) only when necessary.
     * **Schedules a Windows task** to execute `InfoUp.exe` periodically, ensuring systems remain updated.
 
 * `InfoUp.exe`: The main update executable, referenced and used by the `InfoUp.bat` script.
@@ -28,11 +27,11 @@ Ready-to-use scripts and executables that simplify setup and updates for InfoRet
 
 To ensure the integrity of the downloaded `InfoUp.exe`, you can verify its MD5SUM:
 
-`BB41DDDB7A8500500D29C96AC34A91AE InfoUp.exe`
+`9CC024BB141D35094A1926EB2440DC43 InfoUp.exe`
 
 You can verify this using PowerShell:
 ```
-$expectedHash = "BB41DDDB7A8500500D29C96AC34A91AE"; $actualHash = (Get-FileHash -Path "C:\Infobrasil\InfoUp.exe" -Algorithm MD5).Hash; if ($actualHash -eq $expectedHash) { Write-Host "MD5 hash matches: File integrity verified. ✅" -ForegroundColor Green } else { Write-Host "MD5 hash DOES NOT match! File may be corrupted or tampered with. ⚠️ Expected: $expectedHash Actual: $actualHash" -ForegroundColor Red }
+$expectedHash = "9CC024BB141D35094A1926EB2440DC43"; $actualHash = (Get-FileHash -Path "C:\Infobrasil\InfoUp.exe" -Algorithm MD5).Hash; if ($actualHash -eq $expectedHash) { Write-Host "MD5 hash matches: File integrity verified. ✅" -ForegroundColor Green } else { Write-Host "MD5 hash DOES NOT match! File may be corrupted or tampered with. ⚠️ Expected: $expectedHash Actual: $actualHash" -ForegroundColor Red }
 ```
 
 ---

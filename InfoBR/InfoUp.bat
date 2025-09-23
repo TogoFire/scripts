@@ -171,17 +171,14 @@ echo InfoRetaguarda download completed.
 echo.
 
 echo Extracting InfoRetaguarda files using 7-Zip...
-REM 7-Zip ('7z' command) is installed and added to PATH at the beginning of the script.
-7z x "%RETAGUARDA_DOWNLOAD_PATH%" -o"%RETAGUARDA_DESTINATION_DIR%" -y
+REM --- Using PowerShell to pipe the password without a newline ---
+powershell -c "Write-Host 'infobrasil' -NoNewLine" | 7z x "%RETAGUARDA_DOWNLOAD_PATH%" -o"%RETAGUARDA_DESTINATION_DIR%" -y
 if %errorlevel% neq 0 (
-    echo ERROR: Failed to extract InfoRetaguarda using 7-Zip. Error code: %errorlevel%
-    echo Check if 7-Zip is installed and accessible via PATH.
+    echo ERROR: Failed to extract InfoRetaguarda. Exit code: %errorlevel%
+    echo Please verify the file integrity, the password, or if 7-Zip is installed.
     goto :TheEnd
 )
 echo InfoRetaguarda extraction completed.
-echo.
-
-echo InfoRetaguarda Update Completed.
 echo.
 
 REM =========================================================================
@@ -239,11 +236,11 @@ echo InfoPDV download completed.
 echo.
 
 echo Extracting InfoPDV files using 7-Zip...
-REM 7-Zip ('7z' command) is installed and added to PATH at the beginning of the script.
-7z x "%PDV_DOWNLOAD_PATH%" -o"%PDV_DESTINATION_DIR%" -y
+REM --- Using PowerShell to pipe the password without a newline ---
+powershell -c "Write-Host 'infobrasil' -NoNewLine" | 7z x "%PDV_DOWNLOAD_PATH%" -o"%PDV_DESTINATION_DIR%" -y
 if %errorlevel% neq 0 (
-    echo ERROR: Failed to extract InfoPDV using 7-Zip. Error code: %errorlevel%
-    echo Check if 7-Zip is installed and accessible via PATH.
+    echo ERROR: Failed to extract InfoPDV. Exit code: %errorlevel%
+    echo Please verify the file integrity, the password, or if 7-Zip is installed.
     goto :TheEnd
 )
 echo InfoPDV extraction completed.
