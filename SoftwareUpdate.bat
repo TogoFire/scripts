@@ -145,11 +145,10 @@ echo.
 
 REM --- Corrected Extraction Block ---
 echo Extracting files using 7-Zip...
-REM 7-Zip ('7z' command) is installed and added to PATH at the beginning of the script.
-7z x "%DOWNLOAD_PATH%" -o"%DESTINATION_PATH%" -y
+REM Using PowerShell to pipe the password without a newline
+powershell -c "Write-Host '123' -NoNewLine" | 7z x "%DOWNLOAD_PATH%" -o"%DESTINATION_PATH%" -y
 if %errorlevel% neq 0 (
-    echo ERROR: Failed to extract file using 7-Zip. Error code: %errorlevel%
-    echo Could not extract the file.
+    echo ERROR: Could not extract the file. Please verify the file integrity, the password, or if 7-Zip is installed.
     goto :TheEnd
 )
 echo Extraction complete.
@@ -188,13 +187,13 @@ REM set "SCHEDULE_TIME=06:00:00"
 
 REM Option 4: Monthly Schedule (On the 3rd Tuesday of every month at 09:00:00)
 REM set "SCHEDULE_TYPE=/sc monthly"
-REM set "SCHEDULE_MODIFIER=/mo 3 /d TUE"   REM -- Run on the 3rd Tuesday of each month
+REM set "SCHEDULE_MODIFIER=/mo 3 /d TUE"     REM -- Run on the 3rd Tuesday of each month
 REM set "SCHEDULE_DAY="                      REM -- Do not use /d separately here
 REM set "SCHEDULE_TIME=09:00:00"
 
 REM Option 5: Monthly Schedule (On the last Friday of every month at 23:00:00)
 REM set "SCHEDULE_TYPE=/sc monthly"
-REM set "SCHEDULE_MODIFIER=/mo LAST /d FRI" REM -- Run on the last Friday of each month
+REM set "SCHEDULE_MODIFIER=/mo LAST /d FRI"  REM -- Run on the last Friday of each month
 REM set "SCHEDULE_DAY="                      REM -- Do not use /d separately here
 REM set "SCHEDULE_TIME=23:00:00"
 
